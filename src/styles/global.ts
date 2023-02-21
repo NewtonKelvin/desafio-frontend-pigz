@@ -1,4 +1,5 @@
-import { createGlobalStyle } from "styled-components";
+import { Button } from "@mui/material";
+import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -12,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     outline: 0;
     box-sizing: border-box;
 
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
   body {
     -webkit-font-smoothing: antialiased !important;
@@ -28,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
     color: var(--text);
 
     transition: background-image var(--transition);
+    font-family: 'Poppins', sans-serif;
   }
   @media (max-width: 1080px) {
     html {
@@ -63,6 +65,19 @@ const GlobalStyle = createGlobalStyle`
     --page-padding: 10px;
     --navbar-height: 62px;
     --sidebar-width: 300px;
+  }
+`;
+
+export const StyledButton = styled(Button)`
+  && {
+    background: linear-gradient(258deg, #fa641e 0%, #ff881f 100%);
+    border-radius: 32px;
+    min-width: 158px;
+    color: white;
+    text-transform: inherit;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    box-shadow: 0 10px 10px -6px #ff881f;
   }
 `;
 
