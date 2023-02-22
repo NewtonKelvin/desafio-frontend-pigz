@@ -5,6 +5,13 @@ const GlobalStyle = createGlobalStyle`
 
   /* RESET */
 
+  img {
+    max-width: 100%;
+  }
+  p.MuiTypography-root {
+    font-family: 'Poppins', sans-serif;
+  }
+
   *,
   *::before,
   *::after {
@@ -83,6 +90,7 @@ export const StyledButton = styled(Button)`
 
 export const FirstSection = styled(Box)`
   background: linear-gradient(158deg, #fa641e 0%, #ff881f 100%);
+  color: white;
 `;
 export const SecondSection = styled(Box)`
   background: #ffffff;
