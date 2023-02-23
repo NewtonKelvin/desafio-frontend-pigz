@@ -15,7 +15,7 @@ import {
 import React, { useState } from "react";
 import { FirstSection } from "../styles/global.ts";
 
-import pigz_burguer from "../images/burguer_2.png";
+import pigz_burguer from "../images/burguer.png";
 import brasil_flag from "../images/brasil-flag.svg";
 import styled from "styled-components";
 
@@ -23,19 +23,19 @@ import { PatternFormat, PatternFormatProps } from "react-number-format";
 
 const LeftSide = styled(Grid)`
   background-image: url(${pigz_burguer});
+  background-size: 250px;
   background-repeat: no-repeat;
   background-position-y: center;
   display: flex;
   align-items: center;
+  background-position-x: 130%;
 
   @media (max-width: 600px) {
     //sm
-    background-position-x: 150%;
     background-size: 250px;
   }
-  @media (min-width: 900px) {
+  @media (min-width: 600px) {
     //md
-    background-position-x: 100%;
     background-size: 400px;
   }
 `;
