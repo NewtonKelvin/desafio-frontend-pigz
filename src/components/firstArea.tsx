@@ -9,12 +9,17 @@ import {
   Step,
   StepLabel,
   Box,
+  MenuItem,
+  Select,
 } from "@mui/material";
-import { useState } from "react";
+import React, { useState } from "react";
 import { FirstSection } from "../styles/global.ts";
 
 import pigz_burguer from "../images/burguer_2.png";
+import brasil_flag from "../images/brasil-flag.svg";
 import styled from "styled-components";
+
+import { PatternFormat, PatternFormatProps } from "react-number-format";
 
 const LeftSide = styled(Grid)`
   background-image: url(${pigz_burguer});
@@ -73,7 +78,51 @@ const CustomInput = styled(TextField)({
   },
 });
 
+const MaskedInput = styled(PatternFormat)({
+  borderRadius: "16px",
+  fontSize: "14px",
+  fontWeight: "400",
+
+  width: "100%",
+  padding: "16.5px 14px",
+  border: "1px solid rgba(0, 0, 0, 0.23)",
+  height: "53.13px",
+});
+
+const CustomDropdown = styled.div`
+  background-color: #f0f0f0;
+  display: flex;
+  img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+  input {
+    background-color: #f0f0f0;
+  }
+`;
+
 const FirstArea = () => {
+  const brasil_ufs = ["MG", "PI", "RJ", "RN", "RR", "SC", "SP", "SE"];
+  const uf_cidades = [
+    "Barueri",
+    "Alphaville",
+    "Osasco",
+    "São Paulo",
+    "Carapicuíba",
+    "Santana de parnaíba",
+    "Pirapora do bom Jesus",
+  ];
+  const tipos_loja = [
+    "Loja tipo 1",
+    "Loja tipo 2",
+    "Loja tipo 3",
+    "Loja tipo 4",
+    "Loja tipo 5",
+  ];
   const steps = ["Contato", "Endereço", "Estabelecimento"];
 
   const [activeStep, setActiveStep] = useState(0);
@@ -121,6 +170,75 @@ const FirstArea = () => {
     setActiveStep(0);
   };
 
+  const inputStyle = {
+    marginBottom: "20px",
+    marginTop: "6px",
+    width: "100%",
+  };
+
+  const phoneStyle = {
+    marginBottom: "20px",
+    marginTop: "6px",
+    width: "100%",
+    "& div.MuiInputBase-root": {
+      paddingLeft: "0",
+    },
+  };
+
+  const CountrySelect = styled(Select)`
+    background-color: #f0f0f0;
+    width: 100px;
+    height: 53.12px;
+    border: none;
+    .MuiSelect-select[role="button"][aria-haspopup="listbox"] {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #9f9f9f;
+    }
+
+    fieldset {
+      border: none;
+    }
+    img {
+      border-radius: 50%;
+      object-fit: cover;
+      height: 24px;
+      width: 24px;
+    }
+  `;
+
+  interface CustomProps {
+    onChange: (event: { target: { name: string; value: string } }) => void;
+    name: string;
+    placeholder: string;
+    format: string;
+  }
+
+  const MaskedInput2 = React.forwardRef<PatternFormatProps, CustomProps>(
+    function NumericFormatCustom(props, ref) {
+      const { onChange, placeholder, format, ...other } = props;
+
+      return (
+        <PatternFormat
+          {...other}
+          placeholder={placeholder}
+          format={format}
+          mask="_"
+          getInputRef={ref}
+          onValueChange={(values) => {
+            onChange({
+              target: {
+                name: props.name,
+                value: values.value,
+              },
+            });
+          }}
+        />
+      );
+    },
+  );
+
   const contactForm = [
     <>
       <Typography fontSize={28} fontWeight={600}>
@@ -142,7 +260,7 @@ const FirstArea = () => {
             Nome
           </Typography>
           <CustomInput
-            style={{ marginBottom: "20px", marginTop: "6px", width: "100%" }}
+            style={inputStyle}
             id="name-textfield"
             variant="outlined"
             placeholder="Leonercio Goesfeeld"
@@ -153,7 +271,7 @@ const FirstArea = () => {
             Email
           </Typography>
           <CustomInput
-            style={{ marginBottom: "20px", marginTop: "6px", width: "100%" }}
+            style={inputStyle}
             id="email-textfield"
             variant="outlined"
             placeholder="leonercio.goesfeeld@email.com"
@@ -164,16 +282,34 @@ const FirstArea = () => {
             Telefone
           </Typography>
           <CustomInput
-            style={{ marginBottom: "20px", marginTop: "6px", width: "100%" }}
+            style={phoneStyle}
             id="telefone-textfield"
             variant="outlined"
             placeholder="(95) 99876-5432"
             InputProps={{
               startAdornment: (
-                <InputAdornment position="start" sx={{ width: "40px" }}>
-                  +55
+                <InputAdornment
+                  position="start"
+                  sx={{ marginLeft: "-15px", width: "100px" }}
+                >
+                  <CountrySelect defaultValue={55}>
+                    <MenuItem value={55} key={0}>
+                      <img width={24} src={brasil_flag} alt="bandeira brasil" />{" "}
+                      +55
+                    </MenuItem>
+                    <MenuItem value={55} key={1}>
+                      <img width={24} src={brasil_flag} alt="bandeira brasil" />{" "}
+                      +55
+                    </MenuItem>
+                    <MenuItem value={55} key={2}>
+                      <img width={24} src={brasil_flag} alt="bandeira brasil" />{" "}
+                      +55
+                    </MenuItem>
+                  </CountrySelect>
                 </InputAdornment>
               ),
+              inputComponent: MaskedInput2 as any,
+              inputProps: { format: "(##) #####-####" },
             }}
           />
         </Grid>
@@ -205,11 +341,12 @@ const FirstArea = () => {
             <Typography fontSize={12} fontWeight={500}>
               Cep
             </Typography>
-            <CustomInput
-              style={{ marginBottom: "20px", marginTop: "6px", width: "100%" }}
-              id="name-textfield"
-              variant="outlined"
+
+            <MaskedInput
+              style={inputStyle}
               placeholder="00000-00"
+              format="#####-###"
+              mask="_"
             />
           </Grid>
           <Grid md={4} xs={4}>
@@ -217,29 +354,45 @@ const FirstArea = () => {
               Estado
             </Typography>
             <CustomInput
-              style={{ marginBottom: "20px", marginTop: "6px", width: "100%" }}
+              style={inputStyle}
               id="email-textfield"
               variant="outlined"
               placeholder="UF"
-            />
+              defaultValue="SP"
+              select
+            >
+              {brasil_ufs.map((option, index) => (
+                <MenuItem key={index} value={option}>
+                  {option}
+                </MenuItem>
+              ))}
+            </CustomInput>
           </Grid>
           <Grid md={8} xs={8}>
             <Typography fontSize={12} fontWeight={500}>
               Cidade
             </Typography>
             <CustomInput
-              style={{ marginBottom: "20px", marginTop: "6px", width: "100%" }}
+              style={inputStyle}
               id="telefone-textfield"
               variant="outlined"
               placeholder="Selecione"
-            />
+              defaultValue="Barueri"
+              select
+            >
+              {uf_cidades.map((option, index) => (
+                <MenuItem key={index} value={option}>
+                  {option}
+                </MenuItem>
+              ))}
+            </CustomInput>
           </Grid>
           <Grid md={12} xs={12}>
             <Typography fontSize={12} fontWeight={500}>
               Endereço
             </Typography>
             <CustomInput
-              style={{ marginBottom: "20px", marginTop: "6px", width: "100%" }}
+              style={inputStyle}
               id="name-textfield"
               variant="outlined"
               placeholder="Avenida Brasil"
@@ -250,7 +403,7 @@ const FirstArea = () => {
               Número
             </Typography>
             <CustomInput
-              style={{ marginBottom: "20px", marginTop: "6px", width: "100%" }}
+              style={inputStyle}
               id="name-textfield"
               variant="outlined"
               placeholder="123"
@@ -261,7 +414,7 @@ const FirstArea = () => {
               Complemento
             </Typography>
             <CustomInput
-              style={{ marginBottom: "20px", marginTop: "6px", width: "100%" }}
+              style={inputStyle}
               id="name-textfield"
               variant="outlined"
               placeholder="Sala 1"
@@ -297,7 +450,7 @@ const FirstArea = () => {
             Nome da loja
           </Typography>
           <CustomInput
-            style={{ marginBottom: "20px", marginTop: "6px", width: "100%" }}
+            style={inputStyle}
             id="name-textfield"
             variant="outlined"
             placeholder="Leonercio Goesfeeld"
@@ -307,11 +460,11 @@ const FirstArea = () => {
           <Typography fontSize={12} fontWeight={500}>
             CNPJ da loja
           </Typography>
-          <CustomInput
-            style={{ marginBottom: "20px", marginTop: "6px", width: "100%" }}
-            id="email-textfield"
-            variant="outlined"
-            placeholder="leonercio.goesfeeld@email.com"
+          <MaskedInput
+            style={inputStyle}
+            placeholder="12.345.678/0001-99"
+            format="##.###.###/####-##"
+            mask="_"
           />
         </Grid>
         <Grid md={12} xs={12}>
@@ -319,18 +472,19 @@ const FirstArea = () => {
             Tipo de loja
           </Typography>
           <CustomInput
-            style={{ marginBottom: "20px", marginTop: "6px", width: "100%" }}
+            style={inputStyle}
             id="telefone-textfield"
             variant="outlined"
             placeholder="(95) 99876-5432"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start" sx={{ width: "40px" }}>
-                  +55
-                </InputAdornment>
-              ),
-            }}
-          />
+            select
+            defaultValue="Loja tipo 1"
+          >
+            {tipos_loja.map((option, index) => (
+              <MenuItem key={index} value={option}>
+                {option}
+              </MenuItem>
+            ))}
+          </CustomInput>
         </Grid>
       </Grid>
 
