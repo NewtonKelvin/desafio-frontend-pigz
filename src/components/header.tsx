@@ -2,8 +2,14 @@ import { AppBar, Toolbar } from "@mui/material";
 import Box from "@mui/material/Box";
 
 import logotipo from "../images/pigz-gestao-logo.svg";
-import { Navbar } from "../styles/header.ts";
 import { StyledButton } from "../styles/global.ts";
+import styled from "styled-components";
+
+const Navbar = styled.div`
+  div {
+    background-color: var(--white);
+  }
+`;
 
 const Header = () => {
   return (

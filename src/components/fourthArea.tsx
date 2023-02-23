@@ -71,7 +71,7 @@ const FourthArea = () => {
         </Grid>
       </Grid>
       <Grid container alignContent={"center"} justifyContent={"center"}>
-        <Grid xs={12} md={6}>
+        <Grid xs={12} md={6} margin={"auto"}>
           <CustomCard>
             <h1>Pigz</h1>
             <h2>Tudo o que você precisa</h2>
@@ -86,7 +86,7 @@ const FourthArea = () => {
             <StyledButton color="inherit">Vender no pigz agora</StyledButton>
           </CustomCard>
         </Grid>
-        <Grid xs={12} md={6}>
+        <Grid xs={12} md={6} margin={"auto"}>
           <CustomCard>
             <h1>Pagamento On-line</h1>
             <h2>Segurança e agilidade</h2>

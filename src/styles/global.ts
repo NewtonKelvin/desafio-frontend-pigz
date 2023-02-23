@@ -37,6 +37,7 @@ const GlobalStyle = createGlobalStyle`
 
     transition: background-image var(--transition);
     font-family: 'Poppins', sans-serif;
+    border-bottom: 5px solid #FF671F
   }
   @media (max-width: 1080px) {
     html {
