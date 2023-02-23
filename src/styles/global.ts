@@ -84,7 +84,7 @@ export const StyledButton = styled(Button)`
     text-transform: inherit;
     font-weight: 500;
     font-family: "Poppins", sans-serif;
-    box-shadow: 0 10px 10px -6px #ff881f;
+    box-shadow: 0 20px 30px -6px #ff881f;
   }
 `;
 
@@ -98,9 +98,11 @@ export const SecondSection = styled(Box)`
 `;
 export const ThirdSection = styled(Box)`
   background: #ffffff;
+  margin-top: 36px;
 `;
 export const FourthSection = styled(Box)`
   background: #ffffff;
+  margin: 60px 0;
 `;
 
 export default GlobalStyle;

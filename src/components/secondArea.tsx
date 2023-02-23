@@ -88,7 +88,14 @@ const SecondArea = () => {
           </CustomCard>
         </Grid>
         <Grid xs={12} md={12}>
-          <div style={{ width: "400px", margin: "0 auto" }}>
+          <div
+            style={{
+              maxWidth: "600px",
+              margin: "0 auto",
+              padding: "40px",
+              textAlign: "center",
+            }}
+          >
             <Typography
               fontSize={32}
               fontWeight={700}

@@ -496,7 +496,7 @@ const FirstArea = () => {
             </Grid>
           </LeftSide>
           <RightSide xs={12} md={6}>
-            <RightSideContent>
+            <RightSideContent style={{ flexDirection: "column" }}>
               <Stepper activeStep={activeStep} style={{ display: "none" }}>
                 {steps.map((label, index) => {
                   const stepProps: { completed?: boolean } = {};
