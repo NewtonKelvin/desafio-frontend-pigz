@@ -25,8 +25,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     -webkit-font-smoothing: antialiased !important;
 
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     padding: 0;
 
     background-image: var(--background);
@@ -94,31 +94,13 @@ export const FirstSection = styled(Box)`
 `;
 export const SecondSection = styled(Box)`
   background: #ffffff;
+  color: black;
 `;
 export const ThirdSection = styled(Box)`
   background: #ffffff;
 `;
 export const FourthSection = styled(Box)`
   background: #ffffff;
-`;
-
-export const CustomCard = styled(Box)`
-  border-radius: 64px;
-  background-color: #fafafa;
-  display: flex;
-  text-align: center;
-  flex-direction: column;
-  h1 {
-    font-size: 20px;
-  }
-  h2 {
-    font-size: 16px;
-  }
-  img {
-    width: 72px;
-    height: 72px;
-    margin: 0 auto;
-  }
 `;
 
 export default GlobalStyle;

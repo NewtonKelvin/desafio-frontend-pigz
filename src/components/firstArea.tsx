@@ -39,7 +39,9 @@ const LeftSide = styled(Grid)`
     background-size: 400px;
   }
 `;
-const RightSide = styled(Grid)``;
+const RightSide = styled(Grid)`
+  margin-bottom: 70px;
+`;
 
 const RightSideContent = styled(Grid)`
   display: flex;
@@ -48,7 +50,7 @@ const RightSideContent = styled(Grid)`
 
   min-height: 500px;
   background-color: white;
-  color: black;
+  color: #333333;
   border-radius: 32px;
   margin: 20px;
   padding: 24px;
@@ -88,22 +90,6 @@ const MaskedInput = styled(PatternFormat)({
   border: "1px solid rgba(0, 0, 0, 0.23)",
   height: "53.13px",
 });
-
-const CustomDropdown = styled.div`
-  background-color: #f0f0f0;
-  display: flex;
-  img {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-
-    object-fit: cover;
-    object-position: center;
-  }
-  input {
-    background-color: #f0f0f0;
-  }
-`;
 
 const FirstArea = () => {
   const brasil_ufs = ["MG", "PI", "RJ", "RN", "RR", "SC", "SP", "SE"];
@@ -500,10 +486,10 @@ const FirstArea = () => {
         <Grid container>
           <LeftSide xs={12} md={6}>
             <Grid xs={10} md={8} style={{ padding: "20px" }}>
-              <Typography fontSize={40} fontWeight={700}>
+              <Typography fontSize={40} fontWeight={700} color={"#FFFFFF"}>
                 Pigz: tudo que você precisa pra vender ainda mais!
               </Typography>
-              <Typography fontSize={16} fontWeight={400}>
+              <Typography fontSize={16} fontWeight={400} color={"#FFFFFF"}>
                 Temos uma equipe ansiosa para cadastrar seus produtos no Pigz
                 Marketplace e deixar sua loja prontinha para iniciar as vendas.
               </Typography>

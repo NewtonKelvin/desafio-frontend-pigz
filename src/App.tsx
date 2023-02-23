@@ -6,8 +6,8 @@ import GlobalStyle from "./styles/global.ts";
 import FirstArea from "./components/firstArea.tsx";
 import SecondArea from "./components/secondArea.tsx";
 import ThirdArea from "./components/thirdArea.tsx";
-
 import FourthArea from "./components/fourthArea.tsx";
+
 import { Box } from "@mui/material";
 
 function App() {
@@ -15,12 +15,12 @@ function App() {
     <Box>
       <GlobalStyle />
       <Header />
-
-      <FirstArea />
-      <SecondArea />
-      <ThirdArea />
-      <FourthArea />
-
+      <main>
+        <FirstArea />
+        <SecondArea />
+        <ThirdArea />
+        <FourthArea />
+      </main>
       <Footer />
     </Box>
   );
