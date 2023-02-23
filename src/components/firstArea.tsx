@@ -73,7 +73,7 @@ const CustomButton = styled(Button)`
 `;
 
 const CustomInput = styled(TextField)({
-  "& .MuiInputBase-root": {
+  ".MuiInputBase-root, .MuiInputBaseRoot": {
     borderRadius: "16px",
     fontSize: "14px",
     fontWeight: "400",
